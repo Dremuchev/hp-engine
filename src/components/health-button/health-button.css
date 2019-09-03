@@ -1,0 +1,50 @@
+button {
+    color: var(--health-btn-text-color, #FFFFFF);
+    background-color: var(--health-btn-rested-color, #30B6DD);
+    height: var(--health-btn-size, 42px);
+    border-radius: 3px;
+    padding: 0 var(--health-btn-padding, 12px);
+    box-sizing: border-box;
+    border: 1px solid var(--health-btn-border-color , 'transparent');
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+
+button:disabled {
+    color: var(--health-btn-disable-text-color, #FFFFFF);
+    background-color: var(--health-btn-disable-color, var(--health-btn-rested-color, #30B6DD));
+    border: 1px solid var(--health-btn-disable-border-color, var(--health-btn-border-color , 'transparent'));
+    cursor: default;
+}
+
+button:hover {
+    color: var(--health-btn-inverted-text-color, #FFFFFF);
+    background-color: var(--health-btn-hover-color, #16A2D9);
+    transition: all ease 0.2s;
+}
+
+button:active {
+    color: var(--health-btn-inverted-text-color, #FFFFFF);
+    background-color: var(--health-btn-pressed-color, #0088CC);
+    transition: all ease 0.05s;
+}
+
+button:focus-visible {
+    border: 1px solid transparent;
+    transition: all ease 0.2s;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(48,182,221,0.4);
+    transition: all ease 0.2s;
+}
+
+.label {
+    color: inherit;
+    font-family: "Source Sans Pro";
+    font-size: var(--health-btn-font-size, 18px);
+    font-weight: 600;
+    letter-spacing: -0.1px;
+    cursor: inherit;
+}
