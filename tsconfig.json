@@ -2,15 +2,14 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
+    "allowJs": false,
     "declaration": true,
+    "outDir": "dist",
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "module": "es6",
     "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es2017",
+    "target": "es5",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",

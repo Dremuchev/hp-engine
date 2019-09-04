@@ -19,6 +19,9 @@ export namespace Components {
     'size': ControlSize;
     'type': ButtonType;
   }
+  interface HealthDropdown {
+    'open': boolean;
+  }
 }
 
 declare global {
@@ -29,8 +32,15 @@ declare global {
     prototype: HTMLHealthButtonElement;
     new (): HTMLHealthButtonElement;
   };
+
+  interface HTMLHealthDropdownElement extends Components.HealthDropdown, HTMLStencilElement {}
+  var HTMLHealthDropdownElement: {
+    prototype: HTMLHealthDropdownElement;
+    new (): HTMLHealthDropdownElement;
+  };
   interface HTMLElementTagNameMap {
     'health-button': HTMLHealthButtonElement;
+    'health-dropdown': HTMLHealthDropdownElement;
   }
 }
 
@@ -42,9 +52,13 @@ declare namespace LocalJSX {
     'size'?: ControlSize;
     'type'?: ButtonType;
   }
+  interface HealthDropdown extends JSXBase.HTMLAttributes<HTMLHealthDropdownElement> {
+    'open'?: boolean;
+  }
 
   interface IntrinsicElements {
     'health-button': HealthButton;
+    'health-dropdown': HealthDropdown;
   }
 }
 
