@@ -10,17 +10,30 @@
 
 </head>
 <body>
+    <h1>Toggle menu</h1>
+    <div style="display: flex; justify-content: center">
+        <health-toggle-menu>            
+            <health-button name="Open menu" slot="toggler"></health-button>
+            <div class="template-main" style="display: flex; flex-direction: column; min-width: 150px; max-width: 300px" slot="item-template">
+                <div class="template-item">Item 1</div>
+                <div class="template-item">Item 2</div>
+                <div class="template-item">Item 3</div>
+                <div class="template-item">Item 4</div>
+                <div class="template-item">Item 5</div>
+            </div>
+        </health-toggle-menu>
+    </div>    
 
-    <h1>Dropdown</h1>
+    <!-- <h1>Dropdown</h1>
     <health-dropdown open="true">
-        <div class="template-main" style="display: flex; flex-direction: column; min-width: 150px; max-width: 300px" slot="template-item-slot">
+        <div class="template-main" style="display: flex; flex-direction: column; min-width: 150px; max-width: 300px">
             <div class="template-item">Item 1</div>
             <div class="template-item">Item 2</div>
             <div class="template-item">Item 3</div>
             <div class="template-item">Item 4</div>
             <div class="template-item">Item 5</div>
         </div>
-    </health-dropdown>
+    </health-dropdown> -->
 
     <h1>Buttons</h1>
     <h4>Types</h4>

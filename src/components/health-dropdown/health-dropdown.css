@@ -1,5 +1,10 @@
 .dropdown-container {
     display: inline-flex;
+    position: absolute;
+    top: var(--offset-top);
+    right: var(--offset-right);
+    bottom: var(--offset-bottom);
+    left: var(--offset-left);
 }
 
 .dropdown-paper {

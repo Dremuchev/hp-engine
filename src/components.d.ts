@@ -11,6 +11,9 @@ import {
   ButtonType,
   ControlSize,
 } from './components/health-button/health-button.types';
+import {
+  DropdownAlignConfig,
+} from './components/health-dropdown/health-dropdown.types';
 
 export namespace Components {
   interface HealthButton {
@@ -20,8 +23,11 @@ export namespace Components {
     'type': ButtonType;
   }
   interface HealthDropdown {
+    'alignConfig': DropdownAlignConfig;
+    'container': HTMLElement;
     'open': boolean;
   }
+  interface HealthToggleMenu {}
 }
 
 declare global {
@@ -38,9 +44,16 @@ declare global {
     prototype: HTMLHealthDropdownElement;
     new (): HTMLHealthDropdownElement;
   };
+
+  interface HTMLHealthToggleMenuElement extends Components.HealthToggleMenu, HTMLStencilElement {}
+  var HTMLHealthToggleMenuElement: {
+    prototype: HTMLHealthToggleMenuElement;
+    new (): HTMLHealthToggleMenuElement;
+  };
   interface HTMLElementTagNameMap {
     'health-button': HTMLHealthButtonElement;
     'health-dropdown': HTMLHealthDropdownElement;
+    'health-toggle-menu': HTMLHealthToggleMenuElement;
   }
 }
 
@@ -53,12 +66,16 @@ declare namespace LocalJSX {
     'type'?: ButtonType;
   }
   interface HealthDropdown extends JSXBase.HTMLAttributes<HTMLHealthDropdownElement> {
+    'alignConfig'?: DropdownAlignConfig;
+    'container'?: HTMLElement;
     'open'?: boolean;
   }
+  interface HealthToggleMenu extends JSXBase.HTMLAttributes<HTMLHealthToggleMenuElement> {}
 
   interface IntrinsicElements {
     'health-button': HealthButton;
     'health-dropdown': HealthDropdown;
+    'health-toggle-menu': HealthToggleMenu;
   }
 }
 
