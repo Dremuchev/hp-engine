@@ -5,18 +5,19 @@
 <!-- Auto Generated Below -->
 
 
-## Dependencies
+## Properties
 
-### Depends on
+| Property  | Attribute | Description | Type     | Default |
+| --------- | --------- | ----------- | -------- | ------- |
+| `options` | `options` |             | `string` | `''`    |
 
-- [health-dropdown](..\health-dropdown)
 
-### Graph
-```mermaid
-graph TD;
-  health-toggle-menu --> health-dropdown
-  style health-toggle-menu fill:#f9f,stroke:#333,stroke-width:4px
-```
+## Events
+
+| Event                  | Description | Type                                                |
+| ---------------------- | ----------- | --------------------------------------------------- |
+| `toggleMenuItemSelect` |             | `CustomEvent<{ event: MouseEvent; name: string; }>` |
+
 
 ----------------------------------------------
 

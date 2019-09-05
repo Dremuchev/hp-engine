@@ -27,7 +27,9 @@ export namespace Components {
     'container': HTMLElement;
     'open': boolean;
   }
-  interface HealthToggleMenu {}
+  interface HealthToggleMenu {
+    'options': string;
+  }
 }
 
 declare global {
@@ -70,7 +72,10 @@ declare namespace LocalJSX {
     'container'?: HTMLElement;
     'open'?: boolean;
   }
-  interface HealthToggleMenu extends JSXBase.HTMLAttributes<HTMLHealthToggleMenuElement> {}
+  interface HealthToggleMenu extends JSXBase.HTMLAttributes<HTMLHealthToggleMenuElement> {
+    'onToggleMenuItemSelect'?: (event: CustomEvent<{ event: MouseEvent, name: string}>) => void;
+    'options'?: string;
+  }
 
   interface IntrinsicElements {
     'health-button': HealthButton;

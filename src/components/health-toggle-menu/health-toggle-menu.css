@@ -1,3 +1,40 @@
 .container {
     position: relative;
 }
+
+.dropdown-container {
+    cursor: pointer;
+    position: absolute;
+    top: var(--offset-top);
+    right: var(--offset-right);
+    bottom: var(--offset-bottom);
+    left: var(--offset-left);
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 3px 0;
+    box-shadow: 0 4px 22px 0 rgba(29,30,38,0.15);
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.menu-item:hover {
+    background-color: #F2F3F7;
+}
+
+.menu-item {
+    font-family: "Source Sans Pro";
+    letter-spacing: 0.1px;
+    font-size: 14px;
+    display: flex;
+    color: #525462;
+    align-items: center;
+    height: 36px;
+    padding: 0 18px;
+    margin: 3px 0 0;
+}
+
+.menu-item:last-child {
+    margin: 0 0 3px;
+}
