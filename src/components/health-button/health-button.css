@@ -1,3 +1,10 @@
+:host([disabled]) button {
+    color: var(--health-btn-disable-text-color);
+    background-color: var(--health-btn-disable-color, var(--health-btn-rested-color));
+    border: 1px solid var(--health-btn-disable-border-color, var(--health-btn-border-color , 'transparent'));
+    cursor: default;
+}
+
 button {
     color: var(--health-btn-text-color, #FFFFFF);
     background-color: var(--health-btn-rested-color, #30B6DD);
@@ -10,22 +17,15 @@ button {
     cursor: pointer;
 }
 
-button:disabled {
-    color: var(--health-btn-disable-text-color, #FFFFFF);
-    background-color: var(--health-btn-disable-color, var(--health-btn-rested-color, #30B6DD));
-    border: 1px solid var(--health-btn-disable-border-color, var(--health-btn-border-color , 'transparent'));
-    cursor: default;
-}
-
 button:hover {
-    color: var(--health-btn-inverted-text-color, #FFFFFF);
-    background-color: var(--health-btn-hover-color, #16A2D9);
+    color: var(--health-btn-inverted-text-color);
+    background-color: var(--health-btn-hover-color);
     transition: all ease 0.2s;
 }
 
 button:active {
-    color: var(--health-btn-inverted-text-color, #FFFFFF);
-    background-color: var(--health-btn-pressed-color, #0088CC);
+    color: var(--health-btn-inverted-text-color);
+    background-color: var(--health-btn-pressed-color);
     transition: all ease 0.05s;
 }
 

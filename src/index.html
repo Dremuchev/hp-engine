@@ -5,13 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
 
+  <style>
+
+    .items-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    .item-template:hover {
+        background-color: #F2F3F7;
+    }
+
+    .item-template {
+        font-family: "Source Sans Pro";
+        letter-spacing: 0.1px;
+        font-size: 14px;
+        display: flex;
+        color: #525462;
+        align-items: center;
+        height: 36px;
+        padding: 0 18px;
+        margin: 3px 0 0;
+    }
+
+    .item-template:last-child {
+        margin: 0 0 3px;
+    }
+
+  </style>
+
   <script type="module" src="/build/hp-engine.esm.js"></script>
   <script nomodule src="/build/hp-engine.js"></script>
 
 </head>
 <body>
+    <h1>Health menu</h1>
+    <health-menu id="health-menu">
+        <health-button id="health-menu-button" name="Open menu" slot="toggler" type="success"></health-button>
+        <ul class="items-container" slot="items">
+            <li class="item-template">"#B1718C"</li>
+            <li class="item-template">"#892568"</li>
+            <li class="item-template">"#EDC00A"</li>
+            <li class="item-template">"#0097DB"</li>
+            <li class="item-template">"#336EAC"</li>
+            <li class="item-template">"#D60D09"</li>
+            <li class="item-template">"#64198D"</li>
+            <li class="item-template">"#25E80F"</li>
+            <li class="item-template">"#0D3151"</li>
+        </ul>
+    </health-menu>
+
     <h1>Toggle menu</h1>
-    <div style="display: flex; justify-content: center">
+    <div style="display: inline-flex">
         <health-toggle-menu id="health-toggle-menu">
             <health-button name="Open menu" slot="toggler"></health-button>
         </health-toggle-menu>
@@ -48,7 +95,7 @@
         }
         const result = (lenght) => new Array(lenght || 100).fill(undefined).map(el => el = getRandom());
 
-        const options = result(1000);
+        const options = result(10);
         document.getElementById('health-toggle-menu').options = JSON.stringify(options);
     </script>
 </body>

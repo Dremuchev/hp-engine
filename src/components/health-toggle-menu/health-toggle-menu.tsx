@@ -1,24 +1,32 @@
-import { Component, h, State, EventEmitter, Event, Prop } from "@stencil/core";
+import { Component, h, State, EventEmitter, Event, Prop, Listen } from "@stencil/core";
 import { DropdownAlignConfig } from "../health-dropdown/health-dropdown.types";
+import { CustomMouseEvent } from "../../custom.types";
 
 @Component({
     tag: 'health-toggle-menu',
     styleUrl: 'health-toggle-menu.css',
+    shadow: true,
 })
 export class HealthToogleMenu {
     private offsetConfig: DropdownAlignConfig = { top: 7 };
     private containerRef!: HTMLElement;
 
+    @Prop({ reflectToAttr: true }) test: () => void;
+
     @Prop() options: string = '';
     @State() dopdownIsOpen: boolean = false;
-    @Event({ eventName: 'toggleMenuItemSelect' }) toggleMenuItemSelect: EventEmitter<{ event: MouseEvent, name: string}>
+    @Event({ eventName: 'toggleMenuItemSelect' }) toggleMenuItemSelect: EventEmitter<CustomMouseEvent>
+
+    @Listen('click') clickListenner() {
+        this.handleToggle();
+    }
 
     private handleToggle = () => {
         this.dopdownIsOpen = !this.dopdownIsOpen;
     }
 
     private handleItemSelect = (name: string) => (event: MouseEvent) => {
-        this.handleToggle();
+        this.test();
         this.toggleMenuItemSelect.emit({ event, name });
     }
 
@@ -52,16 +60,19 @@ export class HealthToogleMenu {
     )
 
     public render() {
-        const { dopdownIsOpen, setContainerRef, handleToggle, options } = this;
+        const { dopdownIsOpen, setContainerRef, options } = this;
+        const dropdownShown = dopdownIsOpen && Boolean(options.length);
 
         return (
             <div class="container" ref={setContainerRef}>
-                <div class="toggler-container" onClick={handleToggle}>
-                    <slot name="toggler" />
+                <div class="toggler-container">
+                    <slot name="toggler"/>
                 </div>
-                {dopdownIsOpen && Boolean(options.length) && <div class="dropdown-container">
-                    {this.renderItemsList()}
-                </div>}
+                {dropdownShown && (
+                    <div class="dropdown-container">
+                        {this.renderItemsList()}
+                    </div>
+                )}
             </div>
         );
     }

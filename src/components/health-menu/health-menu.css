@@ -1,0 +1,27 @@
+:host([open]) .dropdown-container {
+    visibility: visible;
+}
+
+.container {
+    display: inline-flex;
+    position: relative;
+}
+
+.dropdown-container {
+    cursor: pointer;
+    position: absolute;
+    top: var(--offset-top);
+    right: var(--offset-right);
+    bottom: var(--offset-bottom);
+    left: var(--offset-left);
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 3px 0;
+    box-shadow: 0 4px 22px 0 rgba(29,30,38,0.15);
+    min-width: 150px;
+    max-width: 300px;
+    visibility: hidden;
+    z-index: 1;
+}

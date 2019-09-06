@@ -6,8 +6,9 @@ import {
     Prop,
     h,
 } from "@stencil/core";
-import { ButtonType, ControlSize, ButtonEvent } from "./health-button.types";
+import { ButtonType, ControlSize } from "./health-button.types";
 import { ButtonsColor, ButtonsDimensions } from "./health-button.theme";
+import { CustomMouseEvent } from "../../custom.types";
   
 @Component({
     tag: "health-button",
@@ -17,7 +18,7 @@ import { ButtonsColor, ButtonsDimensions } from "./health-button.theme";
 export class HealthButton {
     @Element() healthButtonEl: HTMLElement;
 
-    @Event({ eventName: 'healthButton' }) healthButton: EventEmitter<ButtonEvent>;
+    @Event({ eventName: 'healthButton' }) healthButton: EventEmitter<CustomMouseEvent>;
 
     @Prop() disabled: boolean = false;
     @Prop() name: string = "Simple button";
@@ -56,7 +57,7 @@ export class HealthButton {
 
     private handleClick = (event: MouseEvent) => {
         if (this.disabled) {
-            return false;
+            return;
         }
         this.healthButton.emit({
             event,

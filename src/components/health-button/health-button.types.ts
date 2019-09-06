@@ -25,8 +25,6 @@ export type DisabledButton = {
 
 export type ButtonsColorPalette = Record<ButtonType, Button>;
 
-export type ButtonEvent = { event: MouseEvent, name: string };
-
 export type Dimensions = {
     height: string;
     padding: string;

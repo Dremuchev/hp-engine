@@ -7,15 +7,20 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  ButtonEvent,
   ButtonType,
   ControlSize,
 } from './components/health-button/health-button.types';
+import {
+  CustomMouseEvent,
+} from './custom.types';
 import {
   DropdownAlignConfig,
 } from './components/health-dropdown/health-dropdown.types';
 
 export namespace Components {
+  interface ClickAway {
+    'onClickAway': () => void;
+  }
   interface HealthButton {
     'disabled': boolean;
     'name': string;
@@ -27,13 +32,25 @@ export namespace Components {
     'container': HTMLElement;
     'open': boolean;
   }
+  interface HealthInput {}
+  interface HealthMenu {
+    'open': boolean;
+    'setOpenMenu': () => Promise<void>;
+  }
   interface HealthToggleMenu {
     'options': string;
+    'test': () => void;
   }
 }
 
 declare global {
 
+
+  interface HTMLClickAwayElement extends Components.ClickAway, HTMLStencilElement {}
+  var HTMLClickAwayElement: {
+    prototype: HTMLClickAwayElement;
+    new (): HTMLClickAwayElement;
+  };
 
   interface HTMLHealthButtonElement extends Components.HealthButton, HTMLStencilElement {}
   var HTMLHealthButtonElement: {
@@ -47,23 +64,41 @@ declare global {
     new (): HTMLHealthDropdownElement;
   };
 
+  interface HTMLHealthInputElement extends Components.HealthInput, HTMLStencilElement {}
+  var HTMLHealthInputElement: {
+    prototype: HTMLHealthInputElement;
+    new (): HTMLHealthInputElement;
+  };
+
+  interface HTMLHealthMenuElement extends Components.HealthMenu, HTMLStencilElement {}
+  var HTMLHealthMenuElement: {
+    prototype: HTMLHealthMenuElement;
+    new (): HTMLHealthMenuElement;
+  };
+
   interface HTMLHealthToggleMenuElement extends Components.HealthToggleMenu, HTMLStencilElement {}
   var HTMLHealthToggleMenuElement: {
     prototype: HTMLHealthToggleMenuElement;
     new (): HTMLHealthToggleMenuElement;
   };
   interface HTMLElementTagNameMap {
+    'click-away': HTMLClickAwayElement;
     'health-button': HTMLHealthButtonElement;
     'health-dropdown': HTMLHealthDropdownElement;
+    'health-input': HTMLHealthInputElement;
+    'health-menu': HTMLHealthMenuElement;
     'health-toggle-menu': HTMLHealthToggleMenuElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface ClickAway extends JSXBase.HTMLAttributes<HTMLClickAwayElement> {
+    'onClickAway'?: () => void;
+  }
   interface HealthButton extends JSXBase.HTMLAttributes<HTMLHealthButtonElement> {
     'disabled'?: boolean;
     'name'?: string;
-    'onHealthButton'?: (event: CustomEvent<ButtonEvent>) => void;
+    'onHealthButton'?: (event: CustomEvent<CustomMouseEvent>) => void;
     'size'?: ControlSize;
     'type'?: ButtonType;
   }
@@ -72,14 +107,22 @@ declare namespace LocalJSX {
     'container'?: HTMLElement;
     'open'?: boolean;
   }
+  interface HealthInput extends JSXBase.HTMLAttributes<HTMLHealthInputElement> {}
+  interface HealthMenu extends JSXBase.HTMLAttributes<HTMLHealthMenuElement> {
+    'open'?: boolean;
+  }
   interface HealthToggleMenu extends JSXBase.HTMLAttributes<HTMLHealthToggleMenuElement> {
-    'onToggleMenuItemSelect'?: (event: CustomEvent<{ event: MouseEvent, name: string}>) => void;
+    'onToggleMenuItemSelect'?: (event: CustomEvent<CustomMouseEvent>) => void;
     'options'?: string;
+    'test'?: () => void;
   }
 
   interface IntrinsicElements {
+    'click-away': ClickAway;
     'health-button': HealthButton;
     'health-dropdown': HealthDropdown;
+    'health-input': HealthInput;
+    'health-menu': HealthMenu;
     'health-toggle-menu': HealthToggleMenu;
   }
 }

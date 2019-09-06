@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type     | Default |
-| --------- | --------- | ----------- | -------- | ------- |
-| `options` | `options` |             | `string` | `''`    |
+| Property  | Attribute | Description | Type         | Default     |
+| --------- | --------- | ----------- | ------------ | ----------- |
+| `options` | `options` |             | `string`     | `''`        |
+| `test`    | --        |             | `() => void` | `undefined` |
 
 
 ## Events
